@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+    db:
+        build: ./postgis/
+        volumes:
+            - ./postgres-data:/var/lib/postgresql/data
+    mongo:
+        image: mongo:3.4
+        volumes:
+            - ./mongo-data:/data/db
+    redis:
+        image: redis:latest
+        volumes:
+            - ./redis-data:/data
+    kobocat: # https://github.com/fieldsight/fieldsight
+        build: .
+        env_file:
+            - .env
+        command: ['/code/scripts/wait-for-it.sh', 'db:5432', '--', '/code/scripts/run_kobocat.sh']
+        volumes:
+            - .:/code
+            - ./media:/media
+        ports:
+            - '8001:8001'
+        depends_on:
+            - db
+            - redis
+            - mongo
+    kpi: # https://github.com/fieldsight/form-builder
+        build: .
+        env_file:
+            - .env
+        command: ['/code/scripts/wait-for-it.sh', 'db:5432', '--', '/code/scripts/run_kpi.sh']
+        volumes:
+            - .:/code
+            - ./media:/media
+        ports:
+            - '8000:8000'
+        depends_on:
+            - db
+            - redis
+            - mongo

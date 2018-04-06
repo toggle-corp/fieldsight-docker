@@ -1,0 +1,4 @@
+media
+postgres-data
+redis-data
+mongo-data

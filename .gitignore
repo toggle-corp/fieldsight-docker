@@ -1,0 +1,15 @@
+# Dependent repo
+kobocat
+kpi
+
+# docker volumes
+media
+mongo-data
+postgres-data
+redis-data
+
+# configs
+.env
+
+# Generated files/folders
+.ropeproject
