@@ -27,7 +27,8 @@ RUN apt-get update -y && \
         libxslt1-dev \
         binutils \
         libproj-dev \
-        gdal-bin
+        gdal-bin \
+        openjdk-8-jdk
 
 # Support utf-8
 RUN locale-gen en_US.UTF-8
@@ -59,9 +60,10 @@ RUN . /venv/kobocat/bin/activate && \
     # Req for kpi
     pip install -r /code/kpi/requirements.txt
 
+COPY . /code/
+
 RUN cd /code/kpi && \
     npm install
 
-COPY . /code/
-
-# CMD ./deploy/scripts/eb_exec.sh
+run cd /code/enketo && \
+    npm install

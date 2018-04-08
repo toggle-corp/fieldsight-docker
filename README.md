@@ -1,32 +1,54 @@
+## Requirements
+
+* [docker](https://docs.docker.com/install/)
+* [docker-compose (v3)](https://docs.docker.com/compose/install/)
+
 ### Clone repo
+
 kobocat
+
 ```bash
-    git clone https://github.com/fieldsight/fieldsight kobocat
-```
-kpi
-```bash
-    git clone https://github.com/fieldsight/form-builder kpi
+    git clone https://github.com/toggle-corp/fieldsight kobocat
 ```
 
-### kobocat local settings
+kpi
+
+```bash
+    git clone https://github.com/toggle-corp/form-builder kpi
+```
+
+kobocat-template
+
+```bash
+    git clone https://github.com/toggle-corp/kobocat-template
+```
+
+### kobocat setup
+
 - Copy sample file
+
     ```bash
     cp ./kobocat/onadata/settings/local_settings.sample.py ./kobocat/onadata/settings/local_settings.py
     ```
-- Change host to 'db'
+
+- Set `FCM_API_KEY` to proper value in the `local_settings.py` file
+
     ```json
     ....
-        'HOST': 'db',
+    FCM_API_KEY = "<YOUR_FCM_API_KEY>"
     ....
     ```
 
-### kpi local settings
+### kpi setup
+
 - Copy sample file
+
     ```bash
     cp ./kpi/kobo_playground/local_settings.sample.py  ./kpi/kobo_playground/local_settings.py
     ```
-- Change host to 'db'
+
 - Create database `kobocat1` (one time or after postgres database wipe)
+
     ```bash
     docker-compose exec db bash
     # Inside container
@@ -35,8 +57,10 @@ kpi
     CREATE DATABASE kobocat1;
     ```
 
-### Docker
+## Run
+
 Build docker images and start project
+
 ```bash
 docker-compose build
 docker-compose up

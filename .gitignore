@@ -1,6 +1,8 @@
 # Dependent repo
 kobocat
 kpi
+kobocat-template
+enketo
 
 # docker volumes
 media
