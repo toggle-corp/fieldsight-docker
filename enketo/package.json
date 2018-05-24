@@ -1,0 +1,18 @@
+{
+    "name": "enketo",
+    "version": "1.0.0",
+    "main": "src/index.js",
+    "license": "MIT",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.4",
+        "babel-preset-env": "^1.7.0",
+        "browserify-standalone": "^0.3.0"
+    },
+    "scripts": {
+        "build": "yarn browserify-standalone && mv enketo.js ../kobocat-template/static/js/"
+    },
+    "dependencies": {
+        "enketo-core": "^4.51.4"
+    }
+}

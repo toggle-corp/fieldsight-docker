@@ -2,7 +2,7 @@
 kobocat
 kpi
 kobocat-template
-enketo
+enketo-transformer
 
 # docker volumes
 media

@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /code/enketo
+cd /code/enketo-transformer
 npm install
 npm start
